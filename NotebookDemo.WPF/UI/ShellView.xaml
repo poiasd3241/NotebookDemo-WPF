@@ -1,0 +1,36 @@
+﻿<Window x:Class="NotebookDemo.WPF.UI.ShellView"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:NotebookDemo.WPF.UI"
+		xmlns:converter="clr-namespace:NotebookDemo.WPF.Converter"
+		d:DataContext="{d:DesignInstance Type=local:ShellViewModel, IsDesignTimeCreatable=True}"
+		mc:Ignorable="d"
+		Title="NotebookDemo"
+		WindowStartupLocation="CenterScreen"
+		SnapsToDevicePixels="True">
+	<Window.Resources>
+		<converter:BoolToVIsibilityFalseToCollapsedConverter x:Key="boolToVIsibilityFalseToCollapsedConverter" />
+		<converter:BoolInvertConverter x:Key="boolInvertConverter" />
+	</Window.Resources>
+	<Grid>
+		<!-- Current page. -->
+		<ContentControl Content="{Binding CurrentViewModel}"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						IsEnabled="{Binding HasError, Converter={StaticResource boolInvertConverter}}" />
+
+		<!-- Error dark overlay. -->
+		<Rectangle Panel.ZIndex="1"
+				   Fill="{StaticResource Black66Brush}"
+				   Visibility="{Binding HasError, Converter={StaticResource boolToVIsibilityFalseToCollapsedConverter}}" />
+
+		<!-- Error panel. -->
+		<ContentControl Panel.ZIndex="2"
+						Content="{Binding Error}"
+						Visibility="{Binding HasError, Converter={StaticResource boolToVIsibilityFalseToCollapsedConverter}}"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center" />
+	</Grid>
+</Window>

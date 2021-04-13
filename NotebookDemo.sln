@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30803.129
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotebookDemo.Core", "NotebookDemo.Core\NotebookDemo.Core.csproj", "{0392779E-6830-470E-91C1-C7540DE356E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotebookDemo.WPF", "NotebookDemo.WPF\NotebookDemo.WPF.csproj", "{984EACF9-3358-46DD-88C1-83B2BBB68DF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0392779E-6830-470E-91C1-C7540DE356E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0392779E-6830-470E-91C1-C7540DE356E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0392779E-6830-470E-91C1-C7540DE356E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0392779E-6830-470E-91C1-C7540DE356E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{984EACF9-3358-46DD-88C1-83B2BBB68DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984EACF9-3358-46DD-88C1-83B2BBB68DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984EACF9-3358-46DD-88C1-83B2BBB68DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984EACF9-3358-46DD-88C1-83B2BBB68DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5504D0D6-11AE-4EA0-8B72-BBE60C02FF6B}
+	EndGlobalSection
+EndGlobal

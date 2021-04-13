@@ -1,0 +1,41 @@
+﻿<Application x:Class="NotebookDemo.WPF.App"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:noteListUI="clr-namespace:NotebookDemo.WPF.UI.NoteListUI"
+			 xmlns:noteUI="clr-namespace:NotebookDemo.WPF.UI.NoteUI"
+			 xmlns:errorUI="clr-namespace:NotebookDemo.WPF.UI.ErrorUI"
+			 xmlns:homeUI="clr-namespace:NotebookDemo.WPF.UI.HomeUI">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary>
+
+					<DataTemplate DataType="{x:Type homeUI:HomeViewModel}">
+						<homeUI:HomeView />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type noteUI:NoteViewModel}">
+						<noteUI:NoteView />
+					</DataTemplate>
+
+					<DataTemplate DataType="{x:Type noteListUI:NoteListItemViewModel}">
+						<noteListUI:NoteListItemView />
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type noteListUI:NoteListViewModel}">
+						<noteListUI:NoteListView />
+					</DataTemplate>
+
+					<DataTemplate DataType="{x:Type errorUI:ErrorViewModel}">
+						<errorUI:ErrorView />
+					</DataTemplate>
+
+				</ResourceDictionary>
+
+				<ResourceDictionary Source="/Styles/Colors.xaml" />
+				<ResourceDictionary Source="/Styles/Buttons.xaml" />
+				<ResourceDictionary Source="/Styles/ScrollBar.xaml" />
+
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+
+	</Application.Resources>
+</Application>

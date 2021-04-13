@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="NotebookDemo.WPF.UI.NoteUI.NoteView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:local="clr-namespace:NotebookDemo.WPF.UI.NoteUI"
+			 xmlns:converter="clr-namespace:NotebookDemo.WPF.Converter"
+			 mc:Ignorable="d"
+			 d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=local:NoteViewModel}"
+			 d:DesignHeight="300">
+	<UserControl.Resources>
+		<converter:BoolToVIsibilityFalseToCollapsedConverter x:Key="boolToVIsibilityFalseToCollapsedConverter" />
+	</UserControl.Resources>
+
+	<Grid d:Width="300"
+		  d:Background="{StaticResource WhiteBrush}">
+		<Grid.RowDefinitions>
+
+			<!-- Title + Important toggle. -->
+			<RowDefinition Height="auto" />
+
+			<!-- Body. -->
+			<RowDefinition Height="*" />
+
+			<!-- Delete + Back to note list buttons. -->
+			<RowDefinition Height="auto" />
+
+		</Grid.RowDefinitions>
+
+		<!-- Title + Important toggle. -->
+		<StackPanel Grid.Row="0"
+					Orientation="Horizontal"
+					HorizontalAlignment="Center">
+
+			<!-- Title. -->
+			<TextBlock Text="{Binding Title}"
+					   FontWeight="Light"
+					   FontSize="20"
+					   HorizontalAlignment="Center"
+					   Margin="0 1 8 3" />
+
+			<!-- Important toggle. -->
+			<ToggleButton Style="{StaticResource ImportantRegularToggleEffectButton}"
+						  IsChecked="{Binding Important}"
+						  VerticalAlignment="Center" />
+		</StackPanel>
+
+		<!-- Body. -->
+		<ScrollViewer Grid.Row="1"
+					  VerticalScrollBarVisibility="Auto"
+					  d:VerticalScrollBarVisibility="Visible">
+
+			<ScrollViewer.Style>
+				<Style TargetType="{x:Type ScrollViewer}">
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type ScrollViewer}">
+
+								<Border x:Name="border"
+										BorderBrush="{StaticResource TransparentBrush}"
+										BorderThickness="0 1">
+									<ScrollViewer x:Name="scrollViewer"
+												  Padding="10 0">
+
+										<TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+												 FontSize="16"
+												 TextWrapping="Wrap"
+												 AcceptsReturn="True"
+												 BorderBrush="{StaticResource Black20Brush}" />
+									</ScrollViewer>
+
+								</Border>
+
+								<ControlTemplate.Triggers>
+									<Trigger Property="ComputedVerticalScrollBarVisibility"
+											 SourceName="scrollViewer"
+											 Value="Visible">
+										<Setter Property="BorderBrush"
+												TargetName="border"
+												Value="{StaticResource Black20Brush}" />
+
+										<Setter Property="Padding"
+												TargetName="scrollViewer"
+												Value="10 0 0 0" />
+									</Trigger>
+								</ControlTemplate.Triggers>
+								
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ScrollViewer.Style>
+		</ScrollViewer>
+
+		<!-- Buttons. -->
+		<StackPanel Grid.Row="2"
+					Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					Margin="0 8">
+			<Button Grid.Row="2"
+					Style="{StaticResource TextButton}"
+					Command="{Binding DeleteNoteCommand}"
+					Content="Delete"
+					FontSize="16"
+					FontWeight="SemiBold"
+					Margin="0 0 8 0"
+					Padding="12 6" />
+			<Button Grid.Row="2"
+					Style="{StaticResource RegularButton}"
+					Command="{Binding  BackToNoteListCommand}"
+					Content="Back to note list"
+					FontSize="16"
+					FontWeight="SemiBold"
+					Padding="12 6" />
+		</StackPanel>
+
+	</Grid>
+</UserControl>
